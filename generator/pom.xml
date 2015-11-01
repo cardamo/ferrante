@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>ferrante-parent</artifactId>
+        <groupId>ru.cardamo.apt</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>ferrante-generator</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.googlecode.jannocessor</groupId>
+            <artifactId>jannocessor</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.googlecode.jannocessor</groupId>
+                    <artifactId>jannocessor-extras</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>ru.cardamo.apt</groupId>
+            <artifactId>ferrante-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+        </dependency>
+    </dependencies>
+</project>
