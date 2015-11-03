@@ -25,6 +25,9 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
+                    <!-- APT doesn't work with version 2.* -->
+                    <!-- Incremental compilation works with 3.2+ -->
+                    <version>3.3</version>
                     <configuration>
                         <target>1.7</target>
                         <source>1.7</source>

@@ -91,24 +91,21 @@ public class MethodFunctionGenerator implements CodeProcessor<JavaMethod> {
 
                 applyMethod.getBody().setHardcoded(methodBody);
 
+                JavaType funInterface = New.type("com.google.common.base.Function<" + argType.getCanonicalName() + "," + returnType.getCanonicalName() + ">");
                 String funClassName = method.getName().copy().appendPart("_f").getCapitalized();
                 JavaNestedClass funClass = New.nestedClass(
                     New.nestedClassModifiers(NestedClassModifierValue.STATIC),
                     funClassName,
                     null,
-                    Collections.singletonList(New.type(
-                        "java.util.function.Function<" +
-                            argType.getSimpleName() + "," +
-                            returnType.getSimpleName() + ">"
-                    )),
-                    Collections.<JavaField>emptyList(),
-                    Collections.<JavaConstructor>emptyList(),
+                    Collections.singletonList(funInterface),
+                    New.NO_FIELDS,
+                    New.NO_CONSTRUCTORS,
                     Collections.singletonList(applyMethod)
                 );
 
                 JavaField function = New.field(
                     PUBLIC_STATIC_FINAL,
-                    New.type(funClassName),
+                    funInterface,
                     method.getName().getText(),
                     New.expression("new " + funClassName + "()")
                 );
